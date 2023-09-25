@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Invitation Page</title>
+<style>
+    body {
+    font: 15px arial, sans-serif;
+    color: #808080;
+}
+input[type=text],
+select ,input[type=password],radio{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 100%;
+    background-color: #800D1E;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #802F1E;
+}
+section {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+article {
+    border-radius: 5px;
+    background-color: #CCCCCC;
+    padding: 20px;
+    color: #222222;
+}
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+ul.topnav li {
+    float: left;
+}
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+ul.topnav li a:hover:not(.active) {
+    background-color: #111;
+}
+ul.topnav li a.active {
+    background-color: #CCCCCC;
+    color: #333
+}
+ul.topnav li.right {
+    float: right;
+}
+@media screen and (max-width: 600px) {
+    ul.topnav li.right,
+    ul.topnav li {
+        float: none;
+    }
+}
+.top {
+    position: relative;
+    background-color: #ffffff;
+    height: 68px;
+    padding-top: 20px;
+    line-height: 50px;
+    overflow: hidden;
+    z-index: 2;
+}
+.logo {
+    font-family: arial;
+    text-decoration: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 37px;
+    letter-spacing: 3px;
+    color: #555555;
+    display: block;
+    position: absolute;
+    top: 17px;
+}
+.logo .dotcom {
+    color: #800D1E
+}
+.topnav {
+    position: relative;
+    z-index: 2;
+    font-size: 17px;
+    background-color: #5f5f5f;
+    color: #f1f1f1;
+    width: 100%;
+    padding: 0;
+    letter-spacing: 1px;
+}
+.top .logo {
+    position: relative;
+    top: 0;
+    width: 100%;
+    text-align: left;
+    margin: auto
+}
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center
+}
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+</style>
+
+</head>
+
+<body>
+ <header>
+    <div class="top">
+    <a class="logo" href="index.html">CapellaVolunteers<span class="dotcom">.org</div></a></div>
+     <nav>
+    <ul class="topnav">
+        <li><a href="index.html">Home</a>
+        </li>
+        <li><a href="invitation.html" class="active">Invitation</a>
+        </li>
+        <li><a href="gallery.html">Gallery</a>
+        </li>
+        <li><a href="registration.html">Registration</a>
+        </li>
+     </ul>
+     </nav>
+</header>
+    <section id="pageForm">
+    <form action="#">
+        <h2>Enter Event Information Below:</h2>
+        <label for="organizationName">Organization name:</label>
+        <input type="text" name="organizationName" id="organizationInput" placeholder="Organization Name" required/>
+        <label for="eventDate">Event Date:</label>
+        <input type="text" name="eventDate" id="eventDateInput" placeholder="Event Date" required/>
+        <label for="websiteURL">URL:</label>
+        <input type="text" name="websiteURL" id="websiteURLInput" placeholder="Website URL" required/>
+        <label for="hostName">Host name:</label>
+        <input type="text" name="hostName" id="hostInput" placeholder="Host Name" required/>
+        <label for="recipientNumber">Number of Recipients:</label>
+        <input type="'text" name="recipientNumber" id="recipientNumber" onkeypress="pressEnter(event)" placeholder="enter number" required/><p>Press Enter to fill in volunteer names</p>
+        <div id="container"></div>
+        <!Tells the browser to call the inviteLetter function when the submit is clicked>
+        <input type="button" id="submit" value="Submit" onclick="inviteLetter()">
+    </form>
+    </section>
+    <article id="Volunteer Information"></article>
+<script>
+    var volAmount;
+function pressEnter(e){
+   var keyCode 
+    if(e &&e.which) { 
+        e = e
+        keyCode = e.which 
+    }
+    else{
+        e = event
+       keyCode = e.keyCode 
+    }
+    if(keyCode == 13) { 
+        addFields(); 
+        return false 
+    }
+    else{
+        return true 
+    }
+}
+
+function addFields() {
+    var number = document.getElementById("recipientNumber").value;
+    
+    document.getElementById("container").innerHTML = "";
+    
+    for (i=0;i<number;i++) {
+        var volunteerForm = document.createElement("label");
+        volunteerForm.type = "label";
+        volunteerForm.innerHTML = "Volunteer Name";
+            
+        var volunteerInput = document.createElement("input");
+        volunteerInput.type = "text";
+        volunteerInput.id = "recipientInput"+i;
+        volunteerInput.placeholder = "Enter Volunteer Name";
+        container.appendChild(volunteerForm);
+            
+        container.appendChild(document.createElement("br"));
+        container.appendChild(volunteerInput);
+           
+        container.appendChild(document.createElement("br"));
+    }
+    recNumber=document.getElementById("recipientNumber").value;
+    document.getElementById("submit").style.visibility="visible";
+}
+    
+function inviteLetter() {
+    var orgName = document.getElementById("organizationInput").value;
+    var eDate = document.getElementById("eventDateInput").value;
+    var webURL = document.getElementById("websiteURLInput").value;
+    var hName = document.getElementById("hostInput").value;
+    for (i=0;i<recNumber; i++) {
+        var rName = [document.getElementById("recipientInput" +i).value, orgName, eDate, webURL, hName];
+        var volLetter =  document.createElement("label");
+        volLetter.innerHTML = "Hello "+rName[0]+"!<br/><br/>"+"You have been invited to volunteer for an even held by " +rName[1] + " on " + rName[2] +". Please come to the following website: " + rName[3] + " to sign up as a volunteer. Thanks!<br/><br/>" + rName[4]+"<br/><br/><hr/>";
+    document.getElementById("Volunteer Information").appendChild(volLetter);
+    }
+}  
+</script>    
+    
+    <footer>This events site is for IT-FP3215 tasks.</footer>
+</body>
+</html>

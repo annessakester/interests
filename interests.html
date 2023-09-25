@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<style>
+body {
+    font: 15px arial, sans-serif;
+    color: #808080;
+}
+input[type=text],
+select ,input[type=password],radio{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 100%;
+    background-color: #800D1E;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #802F1E;
+}
+section {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+article {
+    border-radius: 5px;
+    background-color: #CCCCCC;
+    padding: 20px;
+    color: #222222;
+}
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+ul.topnav li {
+    float: left;
+}
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+ul.topnav li a:hover:not(.active) {
+    background-color: #111;
+}
+ul.topnav li a.active {
+    background-color: #CCCCCC;
+    color: #333
+}
+ul.topnav li.right {
+    float: right;
+}
+@media screen and (max-width: 600px) {
+    ul.topnav li.right,
+    ul.topnav li {
+        float: none;
+    }
+}
+.top {
+    position: relative;
+    background-color: #ffffff;
+    height: 68px;
+    padding-top: 20px;
+    line-height: 50px;
+    overflow: hidden;
+    z-index: 2;
+}
+.logo {
+    font-family: arial;
+    text-decoration: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 37px;
+    letter-spacing: 3px;
+    color: #555555;
+    display: block;
+    position: absolute;
+    top: 17px;
+}
+.logo .dotcom {
+    color: #800D1E
+}
+.topnav {
+    position: relative;
+    z-index: 2;
+    font-size: 17px;
+    background-color: #5f5f5f;
+    color: #f1f1f1;
+    width: 100%;
+    padding: 0;
+    letter-spacing: 1px;
+}
+.top .logo {
+    position: relative;
+    top: 0;
+    width: 100%;
+    text-align: left;
+    margin: auto
+}
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center
+}
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}    
+</style>
+<head>
+    <title>Interests Page</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+
+<body onload="document.form.userID.focus()">
+    <header>
+        <div class="top">
+            <a class="logo" href="index.html">CapellaVolunteers<span class="dotcom">.org</span></a>
+        </div>
+        <nav>
+            <ul class="topnav">
+                <li><a href="index.html">Home</a>
+                </li>
+                <li><a href="invitation.html">Invitation</a>
+                </li>
+                <li><a href="gallery.html">Gallery</a>
+                </li>
+                <li><a href="registration.html" class="active">Registration</a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+    <section id="pageForm">
+        <form name="form" onsubmit="return getData()">
+			
+            <input type="hidden" id="userName" name="userName"/>
+            <input type="hidden" id="password" name="password"/>
+            <input type="hidden" id="passwordVerify" name="passwordVerify" />
+            <input type="hidden" id="firstName" name="firstName" />
+            <input type="hidden" id=lastName name="lastName" />
+            <input type="hidden" id="email" name="email"/>
+            <input type="hidden" id="lastName" name="lastName" />
+    <label> <b>Please select interests:</b></label>
+    <input type="radio" id="hiking" name="interests" value="hiking"> Hiking; 
+<!-- User can choose the hiking radio button on the interests.html page -->
+    <input type="radio" id="swimming" name="interests" value="swimming">Swimming;
+    <input type="radio" id="kayaking" name="interests" value="kayaking">Kayaking; 
+<!-- User can choose the kayaking radio button on theinterests.html page -->
+<!-- Comments (free form text area). -->
+    <label for="comments"><b>Comments: (Optional)</b>
+    </label><input type="text" id="comments" name="comments" placeholder="Please share additional interests not listed." /><br> 
+<!-- Prompts user for comment input on the interests.html page -->
+<!-- Sports Newsletter radio buttons -->
+    <label><b>Sign up for a newsletter: (Please select one)</b></label>
+    <input type="radio" id="signUpYes" name="Newsletter" value="Yes"> Yes 
+<!--User can choose the Yes radio button on the interests.html page -->
+    <input type="radio" id="signUpNo" name="Newsletter" value="No"> No<br><br>
+<!-- User can choose the No radio button on the interests.html page-->
+<!-- Referred by (text field). --><!-- Comments (free form text area). -->
+    <label for="referred"><b>Referred by: (Optional)</b></label>
+    <input type="text" id="referred" name="referred" placeholder="Who referred you?" /><br> 
+    <label for="comments"><b>Additional Comments: (Optional)</b></label>
+    <input type="text" id="comments" name="comments" placeholder="Enter comments here!">
+   
+    <input type="submit" value="Next step" />
+			
+        </form>
+    </section>
+
+    <footer>This events site is for IT-FP3215 tasks.
+    </footer>
+</body>
+<script>
+// Error reporting to assist with troubleshooting.
+    window.onerror = function (message, url, line) {
+        alert("Message : " + message );
+        alert("File URL : " + url );
+        alert("Line Number of Error: " + line );
+    }
+    // This function is called once HTML has loaded completely.
+    // Registration Page.
+    getData = function() {
+        var userID = getCookie("userName"); 
+        var password = getCookie("password"); 
+        var psswrdValidation = getCookie("psswrdVerify"); 
+        var firstName = getCookie("firstName");
+        var lastName = getCookie("lastName"); 
+        var email = getCookie("email"); 
+        var phoneNumber = getCookie("phoneNumber"); 
+        var signUpNewsletter = getCookie("signUpNewsletter"); 
+        
+        var interests = document.getElementById('interests'); 
+        var comments = document.getElementById('comments').value; 
+        var Newsletter = document.getElementById('Newsletter'); 
+        var referred = document.getElementById('referred').value; 
+      
+    if(document.getElementById('hiking').checked) {
+        var interests = "hiking"; 
+    } else if (document.getElementById('swimming').checked) {
+        var interests = "swimming"; 
+    } else if (document.getElementById('kayaking').checked) {
+        var interests = "kayaking"; 
+   } else {interests = "No Selection Made."; 
+    }
+     if(document.getElementById('signUpYes').checked) {
+         var Newsletter = "Yes";
+     } else if(document.getElementById('signUpNo').checked) {
+         var Newsletter = "No";
+     } else {Newsletter = "No Selection Made.";
+    }
+        if(!comments) {
+        var comments = "No comment made.";
+        }
+        if(!referred) {
+        var referred = "No referral entered.";
+        }
+        setCookie("userName", userName, 1); 
+        setCookie("password", password, 1); 
+        setCookie("passwordVerify", passwordVerify, 1);
+        setCookie("firstName", firstName, 1);
+        setCookie("lastName", lastName, 1);
+        setCookie("email", email, 1);
+        setCookie("phoneNumber", phoneNumber, 1);
+        setCookie("signUpNewsletter", signUpNewsletter, 1);
+        setCookie("interests", interests, 1);
+        setCookie("comments", comments, 1); 
+        setCookie("Newsletter", Newsletter, 1); 
+        setCookie("referred", referred, 1); 
+        window.location.replace("confirm.html");return false;
+    }
+    function setCookie(cname, cvalue, exdays) { 
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 1 * 3600 * 1000)); 
+        var expires = "expires=" + d.toUTCString(); 
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"; 
+    }
+    function getCookie(cname) { 
+        var name = cname + "=";
+        var ca = decoded Cookie.split(';'); 
+        for(var i = 0; i <ca.length; i++) { 
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {c = c.substring(1);
+    }if (c.indexOf(name) == 0) {return c.substring(name.length, c.length);
+            }
+        }return "";
+    }
+    window.onload = getData;
+    
+</script>
+</html>
+
+<input type="hidden" name="signUpNewsletter"/ >
